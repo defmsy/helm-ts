@@ -1,6 +1,5 @@
 import { Release, ListFlags } from '../types'
-import { getAliasedGlobalFlags } from './helm-cmd'
-import { runCommand, buildFlagsString } from '../utils/helpers'
+import { getAliasedGlobalFlags, runCommand, buildFlagsString } from '../utils/helpers'
 
 const getAliasedListFlags = ({
   allNamespaces = false

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { getAliasedGlobalFlags } from '../../src/commands/helm-cmd';
+import { getAliasedGlobalFlags } from '../../src/utils/helpers'
 
 describe('helm-cmd', () => {
   it('returns default aliased global flags', () => {

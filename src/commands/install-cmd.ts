@@ -1,6 +1,5 @@
 import { InstallFlags, Release } from '../types'
-import { getAliasedGlobalFlags } from './helm-cmd'
-import { runCommand, buildFlagsString } from '../utils/helpers'
+import { getAliasedGlobalFlags, runCommand, buildFlagsString } from '../utils/helpers'
 
 const buildHelmInstallCmd = (name: string, chart: string, flags: InstallFlags = {}): string => {
   const allFlags = {
