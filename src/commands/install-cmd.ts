@@ -1,14 +1,14 @@
-import { InstallFlags, Release } from '../types';
-import { getAliasedGlobalFlags } from './helm-cmd';
-import { runCommand, buildFlagsString } from '../utils/helpers';
+import { InstallFlags, Release } from '../types'
+import { getAliasedGlobalFlags } from './helm-cmd'
+import { runCommand, buildFlagsString } from '../utils/helpers'
 
-const buildHelmInstallCmd = (name:string, chart: string, flags: InstallFlags = {}) => {
+const buildHelmInstallCmd = (name: string, chart: string, flags: InstallFlags = {}): string => {
   const allFlags = {
-    ...getAliasedGlobalFlags(flags),
-  };
-  const flagsString = buildFlagsString(allFlags);
-  return `helm install ${name} ${chart} ${flagsString}`;
-};
+    ...getAliasedGlobalFlags(flags)
+  }
+  const flagsString = buildFlagsString(allFlags)
+  return `helm install ${name} ${chart} ${flagsString}`
+}
 
 /**
  * This command installs a chart archive.
@@ -20,9 +20,9 @@ const buildHelmInstallCmd = (name:string, chart: string, flags: InstallFlags = {
  * @param flags flags
  */
 const install = async (name: string, chart: string, flags: InstallFlags = {}): Promise<Release> => {
-  const command = buildHelmInstallCmd(name, chart, flags);
-  const stdout = await runCommand(command);
-  return JSON.parse(stdout);
-};
+  const command = buildHelmInstallCmd(name, chart, flags)
+  const stdout = await runCommand(command)
+  return JSON.parse(stdout)
+}
 
-export default install;
+export default install

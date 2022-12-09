@@ -1,19 +1,19 @@
-import { promisify } from 'util';
-import childProcess from 'child_process';
+import { promisify } from 'util'
+import childProcess from 'child_process'
 
-const exec = promisify(childProcess.exec);
+const exec = promisify(childProcess.exec)
 
 /**
  * A wrapper around the built-in exec that will throw an exception if anything is printed to stderr
  * @param command command to execute
  */
-export const runCommand = async (command: string) => {
-  const { stdout, stderr } = await exec(command);
-  if (stderr) {
-    throw new Error(stderr);
+export const runCommand = async (command: string): Promise<string> => {
+  const { stdout, stderr } = await exec(command)
+  if (stderr !== '') {
+    throw new Error(stderr)
   }
-  return stdout;
-};
+  return stdout
+}
 
 /**
  * e.g.
@@ -25,14 +25,14 @@ export const runCommand = async (command: string) => {
  * to:
  * '--all-namespaces --namespace=my-namespace'
  */
-export const buildFlagsString = (flags: object) => {
-  let flagsString = '';
+export const buildFlagsString = (flags: object): string => {
+  let flagsString = ''
   Object.entries(flags).forEach(([key, value]) => {
     if (typeof value === 'boolean') {
-      flagsString += value === false ? '' : ` ${key}`;
+      flagsString += !value ? '' : ` ${key}`
     } else if (typeof value === 'string') {
-      flagsString += value.length === 0 ? '' : ` ${key}=${value}`;
+      flagsString += value.length === 0 ? '' : ` ${key}=${value}`
     }
-  });
-  return flagsString.trim();
-};
+  })
+  return flagsString.trim()
+}
