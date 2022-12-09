@@ -9,6 +9,16 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },
+  reporters: [
+    'default',
+    [
+      'jest-junit',
+      {
+        outputDirectory: 'reports',
+        outputName: 'jest-report.xml'
+      }
+    ]
+  ],
   testEnvironment: 'node',
   collectCoverage: true,
   collectCoverageFrom: ['./src/**'],
