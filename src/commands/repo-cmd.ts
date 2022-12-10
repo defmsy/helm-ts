@@ -1,6 +1,5 @@
 import { Repo, RepoAddFlags, RepoListFlags } from '../types'
-import { getAliasedGlobalFlags } from './helm-cmd'
-import { runCommand, buildFlagsString } from '../utils/helpers'
+import { getAliasedGlobalFlags, runCommand, buildFlagsString } from '../utils/helpers'
 
 const getAliasedRepoAddFlags = ({
   username = '',
@@ -38,7 +37,9 @@ const list = async (flags: RepoListFlags = {}): Promise<Repo[]> => {
   return JSON.parse(stdout)
 }
 
-export default {
+const repo = {
   add,
   list
 }
+
+export default repo

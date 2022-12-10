@@ -1,1 +1,1 @@
-export { default } from './commands/helm-cmd'
+export { default } from './commands'

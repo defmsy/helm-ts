@@ -52,6 +52,33 @@ const releases: Release[] = await helm.list();
  */
 ```
 
+### Fetch release history
+
+`With Helm CLI:`
+```bash
+$ helm history <RELEASE_NAME>
+
+REVISION        UPDATED                         STATUS          CHART                   APP VERSION     DESCRIPTION     
+1               Fri Dec  9 15:59:27 2022        deployed        hello-world-0.1.0       1.16.0          Install complete
+```
+
+`With helm-ts`
+```js
+const releases: Release[] = await helm.history('<RELEASE_NAME>');
+/**
+ *  releases =  [
+ *    {
+ *      revision: '1',
+ *      updated: '2022-12-09T15:59:27.257192-05:00',
+ *      status: 'deployed',
+ *      chart: 'hello-world-0.1.0',
+ *      app_version: '1.16.0',
+ *      description: 'Install complete'
+ *    }
+ *  ]
+ */
+```
+
 **Note:**
 Only commands that support json output will return typed objects. Otherwise a string output is returned where present.
 
